@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--todo rename file-->
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        elementFormDefault="qualified"
+        xmlns:tns="https://github.com/pilipeikoko/MVC_table"
+        targetNamespace="https://github.com/pilipeikoko/MVC_table">
+
+    <element name="old-cards">
+        <complexType>
+            <sequence>
+                <element ref="tns:postcard" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+
+    <complexType name="Postcard">
+        <sequence>
+            <element name="theme" type="string"/>
+            <element name="is-sent" type="boolean"/>
+            <element name="country" type="tns:Country" minOccurs="1" maxOccurs="1"/>
+            <element name="release-date" type="date"/>
+            <element name="author" type="string" minOccurs="0" maxOccurs="1"/>
+            <element name="valuation" type="tns:Valuation" minOccurs="1" maxOccurs="1"/>
+        </sequence>
+        <attribute name="postcard-id" type="tns:Postcard-id" use="required"/>
+        <attribute name="postcard-website" type="tns:Website" use="optional" default="http://www.example.com/"/>
+    </complexType>
+
+    <complexType name="Congratulatory-postcard">
+        <complexContent>
+            <extension base="tns:Postcard">
+                <sequence>
+                    <element name="holiday" type="string"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+
+    <complexType name="Advertising-postcard">
+        <complexContent>
+            <extension base="tns:Postcard">
+                <sequence>
+                    <element name="company" type="string"/>
+                    <element name="expiration-date" type="date"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+
+
+    <simpleType name="Postcard-id">
+        <restriction base="ID">
+            <pattern value="\w{1,20}"/>
+        </restriction>
+    </simpleType>
+
+
+    <simpleType name="Website">
+        <restriction base="string">
+            <pattern value="(https?://)?([\w\d]+\.)?[\w\d]+\.\w+/?.+"/>
+        </restriction>
+    </simpleType>
+
+    <simpleType name="Country">
+        <restriction base="string">
+            <enumeration value="LATVIA"/>
+            <enumeration value="BELARUS"/>
+            <enumeration value="LITHUANIA"/>
+            <enumeration value="RUSSIA"/>
+            <enumeration value="POLAND"/>
+            <enumeration value="UKRAIN"/>
+        </restriction>
+    </simpleType>
+
+    <simpleType name="Valuation">
+        <restriction base="string">
+            <enumeration value="HISTORICAL"/>
+            <enumeration value="COLLECTIBLE"/>
+            <enumeration value="THEMATIC"/>
+        </restriction>
+    </simpleType>
+
+
+    <element name="postcard" type="tns:Postcard"/>
+    <element name="congratulatory-postcard" type="tns:Congratulatory-postcard" substitutionGroup="tns:postcard"/>
+    <element name="advertising-postcard" type="tns:Advertising-postcard" substitutionGroup="tns:postcard"/>
+</schema>

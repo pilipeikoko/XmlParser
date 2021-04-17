@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--todo change links and name-->
+<old-cards
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="https://github.com/pilipeikoko/MVC_table"
+        xsi:schemaLocation="https://github.com/pilipeikoko/MVC_table ./oldCards.xsd">
+
+    <postcard postcard-id="id1">
+        <theme>r</theme>
+        <is-sent>true</is-sent>
+        <country>BELARUS</country>
+        <release-date>2021-12-12</release-date>
+        <author>None</author>
+        <valuation>HISTORICAL</valuation>
+    </postcard>
+
+
+    <postcard postcard-id="id2">
+        <theme>Hello</theme>
+        <is-sent>true</is-sent>
+        <country>RUSSIA</country>
+        <release-date>2020-12-12</release-date>
+        <valuation>HISTORICAL</valuation>
+    </postcard>
+
+    <advertising-postcard postcard-id="id3">
+        <theme>Bye</theme>
+        <is-sent>true</is-sent>
+        <country>LATVIA</country>
+        <release-date>2022-12-10</release-date>
+        <valuation>THEMATIC</valuation>
+        <company>Unknown</company>
+        <expiration-date>2020-12-13</expiration-date>
+    </advertising-postcard>
+
+    <congratulatory-postcard postcard-id="id4">
+        <theme>Merry christmas</theme>
+        <is-sent>true</is-sent>
+        <country>LITHUANIA</country>
+        <release-date>2020-11-11</release-date>
+        <author>None</author>
+        <valuation>THEMATIC</valuation>
+        <holiday>Christmas</holiday>
+    </congratulatory-postcard>
+
+</old-cards>
