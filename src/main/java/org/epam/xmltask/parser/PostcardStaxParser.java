@@ -19,7 +19,6 @@ public class PostcardStaxParser extends PostcardParser {
     public PostcardStaxParser() {
         super();
         //todo remove = null
-
     }
 
     @Override
