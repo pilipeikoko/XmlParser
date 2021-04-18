@@ -30,5 +30,27 @@ public class PostcardBuilderManager {
         }
         return postcardBuilder;
     }
+
+    public PostcardBuilder createPostcard(String type){
+        String uppedType = type.toUpperCase();
+
+        PostcardBuilder postcardBuilder;
+
+        switch (uppedType){
+            case "POSTCARD":
+                postcardBuilder = new PostcardBuilder();
+                break;
+            case "ADVERTISING_POSTCARD":
+                postcardBuilder = new AdvertisingPostcardBuilder();
+                break;
+            case "CONGRATULATORY_POSTCARD":
+                postcardBuilder = new CongratulatoryPostcardBuilder();
+                break;
+            default:
+                //todo
+                throw new IllegalStateException("Unexpected value: " + type);
+        }
+        return postcardBuilder;
+    }
 }
 

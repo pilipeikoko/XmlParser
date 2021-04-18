@@ -58,4 +58,8 @@ public class CustomXmlHandler extends DefaultHandler {
     public void characters(char[] ch,int start,int length){
         currentElementContent = new String(ch,start,length);
     }
+
+    public List<Postcard> getListOfPostcards() {
+        return listOfPostcards;
+    }
 }

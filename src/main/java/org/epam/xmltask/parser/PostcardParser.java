@@ -1,18 +1,21 @@
 package org.epam.xmltask.parser;
 
 import org.epam.xmltask.entity.Postcard;
+import org.epam.xmltask.exception.CustomXmlParserException;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class PostcardParser {
-    protected List<Postcard> setOfPostcards;
+    protected List<Postcard> listOfPostcards;
 
     public PostcardParser(){
-        setOfPostcards = new ArrayList<>();
+        listOfPostcards = new ArrayList<>();
     }
 
-    // todo add getter for field
+    public List<Postcard> getListOfPostcards() {
+        return listOfPostcards;
+    }
 
-    //abstract method createSet
+    public abstract void createListOfPostcards(String path) throws CustomXmlParserException;
 }
