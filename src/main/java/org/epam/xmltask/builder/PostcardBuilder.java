@@ -25,12 +25,16 @@ public class PostcardBuilder {
 
     public Postcard createPostcard() {
         Postcard postcard;
+
         if (attributes.size() == 1) {
-            postcard = new Postcard(elements.get(0), elements.get(1), elements.get(2), elements.get(3),
-                    Boolean.parseBoolean(elements.get(4)), LocalDate.parse(elements.get(5)), attributes.get(0));
+            postcard = new Postcard(elements.get(0), Boolean.parseBoolean(elements.get(1)), elements.get(2),
+                    LocalDate.parse(elements.get(3)), elements.get(4), elements.get(5),
+                    attributes.get(0));
+
         } else {
-            postcard = new Postcard(elements.get(0), elements.get(1), elements.get(2), elements.get(3),
-                    Boolean.parseBoolean(elements.get(4)), LocalDate.parse(elements.get(5)), attributes.get(0),attributes.get(1));
+            postcard = new Postcard(elements.get(0), Boolean.parseBoolean(elements.get(1)), elements.get(2),
+                    LocalDate.parse(elements.get(3)), elements.get(4), elements.get(5),
+                    attributes.get(0),attributes.get(1));
         }
 
         return postcard;

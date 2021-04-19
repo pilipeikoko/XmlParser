@@ -4,7 +4,6 @@ import org.epam.xmltask.entity.AdvertisingPostcard;
 import org.epam.xmltask.entity.Postcard;
 
 import java.time.LocalDate;
-import java.util.List;
 
 public class AdvertisingPostcardBuilder extends PostcardBuilder{
 
@@ -19,11 +18,13 @@ public class AdvertisingPostcardBuilder extends PostcardBuilder{
 
         if (attributes.size() == 1) {
 
-            advertisingPostcard = new AdvertisingPostcard(elements.get(0), elements.get(1), elements.get(2), elements.get(3),
-                    Boolean.parseBoolean(elements.get(4)), LocalDate.parse(elements.get(5)), attributes.get(0),elements.get(6),LocalDate.parse(elements.get(7)));
+            advertisingPostcard = new AdvertisingPostcard(elements.get(0), Boolean.parseBoolean(elements.get(1)),
+                    elements.get(2), LocalDate.parse(elements.get(3)), elements.get(4), elements.get(5),
+                    attributes.get(0),elements.get(6),LocalDate.parse(elements.get(7)));
         } else {
-            advertisingPostcard = new AdvertisingPostcard(elements.get(0), elements.get(1), elements.get(2), elements.get(3),
-                    Boolean.parseBoolean(elements.get(4)), LocalDate.parse(elements.get(5)), attributes.get(0),attributes.get(1),elements.get(6),LocalDate.parse(elements.get(7)));
+            advertisingPostcard = new AdvertisingPostcard(elements.get(0), Boolean.parseBoolean(elements.get(1)),
+                    elements.get(2), LocalDate.parse(elements.get(3)), elements.get(4), elements.get(5),
+                    attributes.get(0),attributes.get(1),elements.get(6),LocalDate.parse(elements.get(7)));
         }
 
         return advertisingPostcard;
