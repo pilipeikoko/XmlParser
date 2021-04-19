@@ -1,6 +1,6 @@
 package org.epam.xmltask.entity;
 
-public enum PostcardType {
+public enum OldCardsType {
     POSTCARD,
     CONGRATULATORY_POSTCARD,
     ADVERTISING_POSTCARD
