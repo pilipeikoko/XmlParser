@@ -1,16 +1,11 @@
 package org.epam.xmltask.builder;
 
-import org.epam.xmltask.entity.Postcard;
-import org.epam.xmltask.entity.PostcardAttributes;
-import org.epam.xmltask.entity.PostcardElements;
-import org.epam.xmltask.entity.PostcardType;
-
-import java.util.List;
-import java.util.Map;
+import org.epam.xmltask.entity.OldCardsType;
+import org.epam.xmltask.exception.CustomXmlParserException;
 
 public class PostcardBuilderManager {
 
-    public PostcardBuilder createPostcard(PostcardType type) {
+    public PostcardBuilder createPostcard(OldCardsType type) throws CustomXmlParserException {
 
         PostcardBuilder postcardBuilder;
 
@@ -25,13 +20,12 @@ public class PostcardBuilderManager {
                 postcardBuilder = new CongratulatoryPostcardBuilder();
                 break;
             default:
-                //todo
-                throw new IllegalStateException("Unexpected value: " + type);
+                throw new CustomXmlParserException("Unexpected value: " + type);
         }
         return postcardBuilder;
     }
 
-    public PostcardBuilder createPostcard(String type){
+    public PostcardBuilder createPostcard(String type) throws CustomXmlParserException {
         String uppedType = type.toUpperCase();
 
         PostcardBuilder postcardBuilder;
@@ -47,8 +41,7 @@ public class PostcardBuilderManager {
                 postcardBuilder = new CongratulatoryPostcardBuilder();
                 break;
             default:
-                //todo
-                throw new IllegalStateException("Unexpected value: " + type);
+                throw new CustomXmlParserException("Unexpected value: " + type);
         }
         return postcardBuilder;
     }
