@@ -1,6 +1,6 @@
 package org.epam.xmltask.entity;
 
-public enum PostcardAttributes {
+public enum OldCardsAttribute {
     ID,
     WEBSITE
 }

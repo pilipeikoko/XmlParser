@@ -1,10 +1,13 @@
 package org.epam.xmltask.entity;
 
-public enum PostcardElements {
+public enum OldCardsElement {
     THEME,
     IS_SENT,
     COUNTRY,
     RELEASE_DATE,
     AUTHOR,
-    VALUATION
+    VALUATION,
+    HOLIDAY,
+    EXPIRATION_DATE,
+    COMPANY
 }
