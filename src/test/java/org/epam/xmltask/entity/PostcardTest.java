@@ -18,7 +18,7 @@ public class PostcardTest {
         String id = "id5";
         String website = "www.test.com";
 
-        Postcard postcard = new Postcard(theme,country,author,valuation,isSent,releaseDate,id,website);
+        Postcard postcard = new Postcard(theme,isSent,country,releaseDate,author,valuation,id,website);
 
         String expectedValue = "id: id5, website: www.test.com, theme: important, country: BELARUS, author: Pushkin," +
                 " valuation: historical, isSent: true, releaseDate: 2021-12-12";
@@ -40,8 +40,8 @@ public class PostcardTest {
         String website = "www.test.com";
         String holiday = "Christmas";
 
-        Postcard congratulatoryPostcard = new CongratulatoryPostcard(theme,country,author,valuation,
-                isSent,releaseDate,id,website,holiday);
+        Postcard congratulatoryPostcard = new CongratulatoryPostcard(theme,isSent,country,releaseDate,
+                author,valuation,id,website,holiday);
 
 
         String expectedValue = new StringBuilder("id: id5, website: www.test.com, theme: important, country: BELARUS," +
@@ -65,12 +65,13 @@ public class PostcardTest {
         String company = "epam:)";
         LocalDate expirationDate = LocalDate.parse("2022-10-10");
 
-        Postcard advertisingPostcard = new AdvertisingPostcard(theme,country,author,valuation,
-                isSent,releaseDate,id,website,company,expirationDate);
+        Postcard advertisingPostcard = new AdvertisingPostcard(theme,isSent,country,releaseDate,
+                author,valuation,id,website,company,expirationDate);
 
-        String expectedValue = new StringBuilder("id: id5, website: www.test.com, theme: important, country: BELARUS," +
-                " author: Pushkin, valuation: historical, isSent: true, releaseDate: 2021-12-12 ,epam:) ,2022-10-10")
+        String expectedValue = new StringBuilder("id: id5, website: www.test.com, theme: important, country: BELARUS,")
+                .append(" author: Pushkin, valuation: historical, isSent: true, releaseDate: 2021-12-12 ,epam:) ,2022-10-10")
                 .toString();
+
         String actualValue = advertisingPostcard.toString();
 
         Assert.assertEquals(actualValue,expectedValue);
