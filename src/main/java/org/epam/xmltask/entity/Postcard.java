@@ -2,81 +2,60 @@ package org.epam.xmltask.entity;
 
 import java.time.LocalDate;
 
+//todo add more xml elements
+//todo loggers
+//todo main
+
 public class Postcard {
     private static final String DEFAULT_WEBSITE = "defaultwebsite.com";
 
     private String theme;
+    private boolean isSent;
     private String country;
+    private LocalDate releaseDate;
     private String author;
     private String valuation;
-
-    private boolean isSent;
-    private LocalDate releaseDate;
 
     private String id;
     private String website;
 
-    public Postcard(){
+    public Postcard() {
 
     }
 
-    public Postcard(String theme, String country, String author, String valuation, boolean isSent
-            , LocalDate releaseDate, String id, String website) {
+    public Postcard(String theme, boolean isSent, String country, LocalDate releaseDate,
+                    String author, String valuation, String id, String website) {
         this.theme = theme;
+        this.isSent = isSent;
         this.country = country;
+        this.releaseDate = releaseDate;
         this.author = author;
         this.valuation = valuation;
-        this.isSent = isSent;
-        this.releaseDate = releaseDate;
         this.id = id;
         this.website = website;
     }
 
-    public Postcard(String theme, String country, String author, String valuation, boolean isSent
-            , LocalDate releaseDate, String id) {
+    public Postcard(String theme, boolean isSent, String country, LocalDate releaseDate,
+                    String author, String valuation, String id) {
         this.theme = theme;
+        this.isSent = isSent;
         this.country = country;
+        this.releaseDate = releaseDate;
         this.author = author;
         this.valuation = valuation;
-        this.isSent = isSent;
-        this.releaseDate = releaseDate;
         this.id = id;
         this.website = DEFAULT_WEBSITE;
     }
 
-    public String getTheme() {
-        return theme;
+    protected int customStringHashCode(String string) {
+        int result;
+        if (string == null) {
+            result = 0;
+        } else {
+            result = string.hashCode();
+        }
+        return result;
     }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public String getValuation() {
-        return valuation;
-    }
-
-    public boolean isSent() {
-        return isSent;
-    }
-
-    public LocalDate getReleaseDate() {
-        return releaseDate;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public String getWebsite() {
-        return website;
-    }
-
-
 
     @Override
     public boolean equals(Object obj) {
@@ -131,16 +110,5 @@ public class Postcard {
 
         return stringBuilder.toString();
     }
-
-    protected int customStringHashCode(String string) {
-        int result;
-        if (string == null) {
-            result = 0;
-        } else {
-            result = string.hashCode();
-        }
-        return result;
-    }
-
 
 }
