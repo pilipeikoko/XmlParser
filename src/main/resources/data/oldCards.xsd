@@ -2,8 +2,8 @@
 <!--todo rename file-->
 <schema xmlns="http://www.w3.org/2001/XMLSchema"
         elementFormDefault="qualified"
-        xmlns:tns="https://github.com/pilipeikoko/MVC_table"
-        targetNamespace="https://github.com/pilipeikoko/MVC_table">
+        xmlns:tns="https://github.com/pilipeikoko/XmlParser"
+        targetNamespace="https://github.com/pilipeikoko/XmlParser">
 
     <element name="old-cards">
         <complexType>
@@ -23,7 +23,7 @@
             <element name="valuation" type="tns:Valuation" minOccurs="1" maxOccurs="1"/>
         </sequence>
         <attribute name="postcard-id" type="tns:Postcard-id" use="required"/>
-        <attribute name="postcard-website" type="tns:Website" use="optional" default="http://www.example.com/"/>
+        <attribute name="postcard-website" type="tns:Website" use="optional" default="defaultwebsite.com"/>
     </complexType>
 
     <complexType name="Congratulatory-postcard">
