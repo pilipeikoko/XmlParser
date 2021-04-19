@@ -6,24 +6,22 @@ public class AdvertisingPostcard extends Postcard {
     private String company;
     private LocalDate expirationDate;
 
-    public AdvertisingPostcard(String theme, String country, String author, String valuation, boolean isSent, LocalDate releaseDate, String id, String website, String company, LocalDate expirationDate) {
-        super(theme, country, author, valuation, isSent, releaseDate, id, website);
+    public AdvertisingPostcard(String theme, boolean isSent, String country, LocalDate releaseDate,
+                               String author, String valuation, String id, String website, String company,
+                               LocalDate expirationDate) {
+
+        super(theme, isSent, country, releaseDate, author, valuation, id, website);
         this.company = company;
         this.expirationDate = expirationDate;
     }
 
-    public AdvertisingPostcard(String theme, String country, String author, String valuation, boolean isSent, LocalDate releaseDate, String id, String company, LocalDate expirationDate) {
-        super(theme, country, author, valuation, isSent, releaseDate, id);
+    public AdvertisingPostcard(String theme, boolean isSent, String country, LocalDate releaseDate,
+                               String author, String valuation, String id, String company,
+                               LocalDate expirationDate) {
+
+        super(theme, isSent, country, releaseDate, author, valuation, id);
         this.company = company;
         this.expirationDate = expirationDate;
-    }
-
-    public String getCompany() {
-        return company;
-    }
-
-    public LocalDate getExpirationDate() {
-        return expirationDate;
     }
 
     @Override
@@ -37,7 +35,6 @@ public class AdvertisingPostcard extends Postcard {
 
         AdvertisingPostcard congratulatoryPostcard = (AdvertisingPostcard) obj;
 
-        //todo might be wrong
         boolean flag = super.equals(congratulatoryPostcard)
                 && (this.company != null && this.company.equals(congratulatoryPostcard.company))
                 && (this.expirationDate != null && this.expirationDate.equals(congratulatoryPostcard.expirationDate));
@@ -47,7 +44,6 @@ public class AdvertisingPostcard extends Postcard {
 
     @Override
     public int hashCode() {
-        //todo might be wrong as well
         int result = super.hashCode();
         result += customStringHashCode(company);
         result += expirationDate == null ? 0 : expirationDate.hashCode();
@@ -56,7 +52,6 @@ public class AdvertisingPostcard extends Postcard {
     }
 
     @Override
-    //todo might be wrong as well
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
 

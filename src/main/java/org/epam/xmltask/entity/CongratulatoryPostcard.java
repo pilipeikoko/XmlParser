@@ -2,27 +2,26 @@ package org.epam.xmltask.entity;
 
 import java.time.LocalDate;
 
-public class CongratulatoryPostcard extends Postcard{
+public class CongratulatoryPostcard extends Postcard {
     private String holiday;
 
-    public CongratulatoryPostcard(String theme, String country, String author, String valuation, boolean isSent, LocalDate releaseDate, String id, String website,String holiday) {
+    public CongratulatoryPostcard(String theme, boolean isSent, String country, LocalDate releaseDate,
+                                  String author, String valuation, String id, String website, String holiday) {
 
-        super(theme, country, author, valuation, isSent, releaseDate, id, website);
+        super(theme, isSent, country, releaseDate, author, valuation, id, website);
         this.holiday = holiday;
     }
 
-    public CongratulatoryPostcard(String theme, String country, String author, String valuation, boolean isSent, LocalDate releaseDate, String id, String holiday) {
-        super(theme, country, author, valuation, isSent, releaseDate, id);
-        this.holiday = holiday;
-    }
+    public CongratulatoryPostcard(String theme, boolean isSent, String country, LocalDate releaseDate,
+                                  String author, String valuation, String id, String holiday) {
 
-    public String getHoliday() {
-        return holiday;
+        super(theme, isSent, country, releaseDate, author, valuation, id);
+        this.holiday = holiday;
     }
 
     @Override
-    public boolean equals(Object obj){
-        if(obj == this){
+    public boolean equals(Object obj) {
+        if (obj == this) {
             return true;
         }
         if (obj.getClass() != this.getClass()) {
@@ -31,7 +30,6 @@ public class CongratulatoryPostcard extends Postcard{
 
         CongratulatoryPostcard congratulatoryPostcard = (CongratulatoryPostcard) obj;
 
-        //todo might be wrong
         boolean flag = super.equals(congratulatoryPostcard)
                 && (this.holiday != null && this.holiday.equals(congratulatoryPostcard.holiday));
 
@@ -39,8 +37,7 @@ public class CongratulatoryPostcard extends Postcard{
     }
 
     @Override
-    public int hashCode(){
-        //todo might be wrong as well
+    public int hashCode() {
         int result = super.hashCode();
         result += customStringHashCode(holiday);
 
@@ -48,8 +45,7 @@ public class CongratulatoryPostcard extends Postcard{
     }
 
     @Override
-    //todo might be wrong as well
-    public String toString(){
+    public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
 
         stringBuilder.append(super.toString());
