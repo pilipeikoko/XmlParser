@@ -35,7 +35,7 @@ public class OldCardsXmlValidator {
             validator.validate(schemaSource);
 
         } catch (SAXException | IOException e) {
-            throw new CustomXmlParserException("Wrong XML file: " + e.getMessage());
+            throw new CustomXmlParserException("Wrong XML file: " + e.getMessage(),e.getCause());
         }
 
     }
