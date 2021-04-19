@@ -2,74 +2,77 @@ package org.epam.xmltask.parser;
 
 import org.epam.xmltask.builder.PostcardBuilder;
 import org.epam.xmltask.builder.PostcardBuilderManager;
-import org.epam.xmltask.entity.PostcardType;
+import org.epam.xmltask.entity.OldCardsType;
 import org.epam.xmltask.exception.CustomXmlParserException;
+import org.epam.xmltask.validator.OldCardsEnumValidator;
 
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 public class PostcardStaxParser extends PostcardParser {
     private PostcardBuilder postcard;
     private boolean isPostcard;
-    private String currentStringTagType;
 
     public PostcardStaxParser() {
         super();
-        //todo remove = null
     }
 
     @Override
     public void createListOfPostcards(String path) throws CustomXmlParserException {
         XMLInputFactory inputFactory = XMLInputFactory.newFactory();
 
-        PostcardBuilderManager builderManager = new PostcardBuilderManager();
-
         try {
-            //todo pass not path
-            FileInputStream inputStream = new FileInputStream(path);
+            File file = new File(ClassLoader.getSystemResource(path).getPath());
+            FileInputStream inputStream = new FileInputStream(file);
             XMLStreamReader streamReader = inputFactory.createXMLStreamReader(inputStream);
 
             readXmlFile(streamReader);
+
         } catch (FileNotFoundException exception) {
             throw new CustomXmlParserException("File not found", exception.getCause());
         } catch (XMLStreamException exception) {
-            //todo fix message
             throw new CustomXmlParserException("Stream exception", exception.getCause());
         }
     }
 
-    private void readXmlFile(XMLStreamReader streamReader) throws XMLStreamException {
-        String currentElement;
+    private void readXmlFile(XMLStreamReader streamReader) throws XMLStreamException, CustomXmlParserException {
+        String currentElement = "";
 
-        PostcardBuilderManager builderManager = null;
+        PostcardBuilderManager builderManager = new PostcardBuilderManager();
 
         while (streamReader.hasNext()) {
+            streamReader.next();
             if (streamReader.isStartElement()) {
 
-                currentStringTagType = streamReader.getLocalName();
-                String currentUppedElement = currentStringTagType.toUpperCase();
-                //todo add type validator for enums
-                PostcardType postcardType = PostcardType.valueOf(currentUppedElement);
-                isPostcard = true;
+                String currentStringTagType = streamReader.getLocalName();
+                String currentUppedStringTagType = currentStringTagType.toUpperCase();
 
-                builderManager = new PostcardBuilderManager();
-                postcard = builderManager.createPostcard(postcardType);
+                if (OldCardsEnumValidator.isPostcardTypeCorrect(currentStringTagType)) {
+                    OldCardsType oldCardsType = OldCardsType.valueOf(currentUppedStringTagType.replaceAll("-","_"));
 
-                for (int i = 0; i < streamReader.getAttributeCount(); i++) {
-                    postcard.addAttribute(streamReader.getAttributeValue(i));
+                    isPostcard = true;
+
+                    builderManager = new PostcardBuilderManager();
+                    currentElement = currentStringTagType;
+                    postcard = builderManager.createPostcard(oldCardsType);
+
+                    for (int i = 0; i < streamReader.getAttributeCount(); i++) {
+                        postcard.addAttribute(streamReader.getAttributeValue(i));
+                    }
+                }
+                if (OldCardsEnumValidator.isPostcardElementCorrect(currentStringTagType)) {
+                    postcard.addElement(getNextElementValue(streamReader));
                 }
             }
 
-            //todo add type validator
-            postcard.addElement(getNextElementValue(streamReader));
-        }
-
-        if (streamReader.isEndElement()) {
-            if (isPostcard && currentStringTagType.equals(streamReader.getLocalName())) {
-                listOfPostcards.add(postcard.createPostcard());
+            if (streamReader.isEndElement()) {
+                if (isPostcard && currentElement.equals(streamReader.getLocalName())) {
+                    listOfPostcards.add(postcard.createPostcard());
+                }
             }
         }
 

@@ -1,5 +1,6 @@
 package org.epam.xmltask.parser;
 
+import org.epam.xmltask.exception.CustomXmlParserException;
 import org.epam.xmltask.handler.CustomXmlHandler;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -8,10 +9,9 @@ import org.xml.sax.XMLReader;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.net.URL;
-import java.util.Objects;
 
 public class PostcardSaxParser extends PostcardParser {
 
@@ -20,7 +20,7 @@ public class PostcardSaxParser extends PostcardParser {
     }
 
     @Override
-    public void createListOfPostcards(String path) {
+    public void createListOfPostcards(String path) throws CustomXmlParserException {
         try {
             SAXParserFactory parserFactory = SAXParserFactory.newInstance();
 
@@ -30,19 +30,20 @@ public class PostcardSaxParser extends PostcardParser {
             CustomXmlHandler xmlHandler = new CustomXmlHandler();
             reader.setContentHandler(xmlHandler);
 
-            //todo objects?
-            URL url = Objects.requireNonNull(this.getClass().getResource("/data/Postcards.xml"));
-            FileInputStream inputStream = new FileInputStream(url.getFile());
+            File file = new File(ClassLoader.getSystemResource(path).getPath());
+            FileInputStream inputStream = new FileInputStream(file);
             InputSource inputSource = new InputSource(inputStream);
 
             reader.parse(inputSource);
 
             this.listOfPostcards = xmlHandler.getListOfPostcards();
 
-        } catch (IOException| SAXException| ParserConfigurationException exception) {
-            exception.printStackTrace();
-            //todo
-            //todo mb throws
+        } catch (IOException exception) {
+            throw new CustomXmlParserException("IOE exception",exception.getCause());
+        } catch (SAXException exception){
+            throw new CustomXmlParserException("SAX exception",exception.getCause());
+        } catch (ParserConfigurationException exception){
+            throw new CustomXmlParserException("Configuration error",exception.getCause());
         }
 
 
