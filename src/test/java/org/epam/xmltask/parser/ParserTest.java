@@ -18,8 +18,7 @@ public class ParserTest {
         postcardParser.createListOfPostcards(path);
         List<Postcard> listOfPostcards = postcardParser.getListOfPostcards();
 
-        //todo fix 4
-        int expectedSize = 4;
+        int expectedSize = 16;
         int actualSize = listOfPostcards.size();
 
         Assert.assertEquals(expectedSize, actualSize);
@@ -27,15 +26,14 @@ public class ParserTest {
     }
     @Test
     public void postcardStaxParserTest() throws CustomXmlParserException {
-        String path = "/data/oldCards.xml";
+        String path = "data/oldCards.xml";
 
         PostcardParser postcardParser = new PostcardStaxParser();
 
         postcardParser.createListOfPostcards(path);
         List<Postcard> listOfPostcards = postcardParser.getListOfPostcards();
 
-        //todo fix 4
-        int expectedSize = 4;
+        int expectedSize = 16;
         int actualSize = listOfPostcards.size();
 
         Assert.assertEquals(expectedSize, actualSize);
@@ -50,8 +48,7 @@ public class ParserTest {
         postcardParser.createListOfPostcards(path);
         List<Postcard> listOfPostcards = postcardParser.getListOfPostcards();
 
-        //todo fix 4
-        int expectedSize = 4;
+        int expectedSize = 16;
         int actualSize = listOfPostcards.size();
 
         Assert.assertEquals(expectedSize, actualSize);
