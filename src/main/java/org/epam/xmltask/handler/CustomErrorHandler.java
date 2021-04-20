@@ -1,12 +1,16 @@
 package org.epam.xmltask.handler;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.xml.sax.ErrorHandler;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 
 public class CustomErrorHandler implements ErrorHandler {
+
     @Override
     public void warning(SAXParseException exception) throws SAXException {
+
         throw new SAXException("warning: " + exception.getMessage());
     }
 

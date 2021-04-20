@@ -1,5 +1,7 @@
 package org.epam.xmltask.handler;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.epam.xmltask.builder.PostcardBuilder;
 import org.epam.xmltask.builder.PostcardBuilderManager;
 import org.epam.xmltask.entity.Postcard;
@@ -15,12 +17,13 @@ import java.util.stream.IntStream;
 
 public class CustomXmlHandler extends DefaultHandler {
 
+    private final static Logger LOGGER = LogManager.getLogger();
+
     private final List<Postcard> listOfPostcards;
     private PostcardBuilder postcardBuilder;
-    private OldCardsType oldCardsType;
     private boolean isPostcard;
 
-    //todo rename
+    private OldCardsType oldCardsType;
     private String currentElementContent;
 
     public CustomXmlHandler() {
@@ -44,8 +47,8 @@ public class CustomXmlHandler extends DefaultHandler {
                             .forEach(i -> postcardBuilder.addAttribute(attributes.getValue(i)));
                 }
             }
-        } catch (CustomXmlParserException exception){
-            //todo Logger
+        } catch (CustomXmlParserException exception) {
+            LOGGER.warn("Unknown type: " + exception.getMessage());
             isPostcard = false;
         }
     }
