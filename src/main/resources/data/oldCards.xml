@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!--todo change links and name-->
 <old-cards
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xmlns="https://github.com/pilipeikoko/XmlParser"
         xsi:schemaLocation="https://github.com/pilipeikoko/XmlParser ./oldCards.xsd">
 
     <postcard postcard-id="id1">
-        <theme>r</theme>
+        <theme>theme0</theme>
         <is-sent>true</is-sent>
         <country>BELARUS</country>
         <release-date>2021-12-12</release-date>
@@ -44,5 +43,126 @@
         <valuation>THEMATIC</valuation>
         <holiday>Christmas</holiday>
     </congratulatory-postcard>
+
+    <advertising-postcard postcard-id="id5" postcard-website="www.random.org">
+        <theme>theme2</theme>
+        <is-sent>true</is-sent>
+        <country>UKRAIN</country>
+        <release-date>2019-12-10</release-date>
+        <author>RandomAuthor1</author>
+        <valuation>HISTORICAL</valuation>
+        <company>EPAM</company>
+        <expiration-date>2023-12-13</expiration-date>
+    </advertising-postcard>
+
+    <advertising-postcard postcard-id="id6">
+        <theme>theme3</theme>
+        <is-sent>false</is-sent>
+        <country>RUSSIA</country>
+        <release-date>2021-11-10</release-date>
+        <author>Pavlov</author>
+        <valuation>HISTORICAL</valuation>
+        <company>bsuir</company>
+        <expiration-date>2023-08-13</expiration-date>
+    </advertising-postcard>
+
+    <postcard postcard-id="id7">
+        <theme>theme4</theme>
+        <is-sent>false</is-sent>
+        <country>RUSSIA</country>
+        <release-date>2018-12-12</release-date>
+        <author>Ivanov</author>
+        <valuation>COLLECTIBLE</valuation>
+    </postcard>
+
+    <postcard postcard-id="id8">
+        <theme>theme5</theme>
+        <is-sent>true</is-sent>
+        <country>RUSSIA</country>
+        <release-date>2014-12-12</release-date>
+        <author>Petrov</author>
+        <valuation>HISTORICAL</valuation>
+    </postcard>
+
+    <advertising-postcard postcard-id="id9">
+        <theme>theme6</theme>
+        <is-sent>false</is-sent>
+        <country>LATVIA</country>
+        <release-date>2010-11-10</release-date>
+        <author>Sidorov</author>
+        <valuation>COLLECTIBLE</valuation>
+        <company>bsu</company>
+        <expiration-date>2020-08-13</expiration-date>
+    </advertising-postcard>
+
+    <postcard postcard-id="id10">
+        <theme>theme7</theme>
+        <is-sent>false</is-sent>
+        <country>LITHUANIA</country>
+        <release-date>2013-12-12</release-date>
+        <author>Monin</author>
+        <valuation>COLLECTIBLE</valuation>
+    </postcard>
+
+    <advertising-postcard postcard-id="id11">
+        <theme>theme8</theme>
+        <is-sent>true</is-sent>
+        <country>RUSSIA</country>
+        <release-date>2015-11-10</release-date>
+        <author>Vomin</author>
+        <valuation>HISTORICAL</valuation>
+        <company>epam</company>
+        <expiration-date>2016-08-13</expiration-date>
+    </advertising-postcard>
+
+    <congratulatory-postcard postcard-id="id12">
+        <theme>Happy new year</theme>
+        <is-sent>false</is-sent>
+        <country>POLAND</country>
+        <release-date>2010-11-11</release-date>
+        <author>Totti</author>
+        <valuation>THEMATIC</valuation>
+        <holiday>New year</holiday>
+    </congratulatory-postcard>
+
+    <congratulatory-postcard postcard-id="id13">
+        <theme>Happy birthday</theme>
+        <is-sent>true</is-sent>
+        <country>BELARUS</country>
+        <release-date>2010-11-11</release-date>
+        <author>Matic</author>
+        <valuation>HISTORICAL</valuation>
+        <holiday>Birthday</holiday>
+    </congratulatory-postcard>
+
+    <postcard postcard-id="id14">
+        <theme>theme9</theme>
+        <is-sent>true</is-sent>
+        <country>RUSSIA</country>
+        <release-date>2012-12-12</release-date>
+        <author>Mojin</author>
+        <valuation>HISTORICAL</valuation>
+    </postcard>
+
+    <congratulatory-postcard postcard-id="id15">
+        <theme>Merry christmas</theme>
+        <is-sent>true</is-sent>
+        <country>RUSSIA</country>
+        <release-date>2006-11-11</release-date>
+        <author>Sovin</author>
+        <valuation>THEMATIC</valuation>
+        <holiday>Christmas</holiday>
+    </congratulatory-postcard>
+
+    <advertising-postcard postcard-id="id16">
+        <theme>theme10</theme>
+        <is-sent>true</is-sent>
+        <country>BELARUS</country>
+        <release-date>2006-11-10</release-date>
+        <author>Merrin</author>
+        <valuation>COLLECTIBLE</valuation>
+        <company>epam</company>
+        <expiration-date>2016-08-13</expiration-date>
+    </advertising-postcard>
 
 </old-cards>

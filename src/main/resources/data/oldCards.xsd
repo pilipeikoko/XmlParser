@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--todo rename file-->
 <schema xmlns="http://www.w3.org/2001/XMLSchema"
         elementFormDefault="qualified"
         xmlns:tns="https://github.com/pilipeikoko/XmlParser"
