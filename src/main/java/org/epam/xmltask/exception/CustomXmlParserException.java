@@ -1,6 +1,6 @@
 package org.epam.xmltask.exception;
 
-public class CustomXmlParserException extends Exception{
+public class CustomXmlParserException extends Exception {
     public CustomXmlParserException() {
     }
 
