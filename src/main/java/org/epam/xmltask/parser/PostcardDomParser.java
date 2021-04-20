@@ -4,6 +4,7 @@ import org.epam.xmltask.builder.PostcardBuilder;
 import org.epam.xmltask.builder.PostcardBuilderManager;
 import org.epam.xmltask.exception.CustomXmlParserException;
 import org.epam.xmltask.validator.OldCardsEnumValidator;
+import org.epam.xmltask.validator.OldCardsXmlValidator;
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 
@@ -24,6 +25,9 @@ public class PostcardDomParser extends PostcardParser {
 
     @Override
     public void createListOfPostcards(String path) throws CustomXmlParserException {
+
+        OldCardsXmlValidator.validateXml(path);
+
         try {
             DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
             builderFactory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
@@ -57,6 +61,7 @@ public class PostcardDomParser extends PostcardParser {
                 }
 
             }
+            LOGGER.info("Parsed successfully. Amount of found objects: " + listOfPostcards.size());
         } catch (ParserConfigurationException exception) {
             throw new CustomXmlParserException("Configuration error", exception.getCause());
         } catch (SAXException exception) {

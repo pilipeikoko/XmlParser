@@ -5,6 +5,7 @@ import org.epam.xmltask.builder.PostcardBuilderManager;
 import org.epam.xmltask.entity.OldCardsType;
 import org.epam.xmltask.exception.CustomXmlParserException;
 import org.epam.xmltask.validator.OldCardsEnumValidator;
+import org.epam.xmltask.validator.OldCardsXmlValidator;
 
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamException;
@@ -23,6 +24,8 @@ public class PostcardStaxParser extends PostcardParser {
 
     @Override
     public void createListOfPostcards(String path) throws CustomXmlParserException {
+        OldCardsXmlValidator.validateXml(path);
+
         XMLInputFactory inputFactory = XMLInputFactory.newFactory();
 
         try {
@@ -31,6 +34,8 @@ public class PostcardStaxParser extends PostcardParser {
             XMLStreamReader streamReader = inputFactory.createXMLStreamReader(inputStream);
 
             readXmlFile(streamReader);
+
+            LOGGER.info("Parsed successfully. Amount of found objects: " + listOfPostcards.size());
 
         } catch (FileNotFoundException exception) {
             throw new CustomXmlParserException("File not found", exception.getCause());
@@ -52,7 +57,7 @@ public class PostcardStaxParser extends PostcardParser {
                 String currentUppedStringTagType = currentStringTagType.toUpperCase();
 
                 if (OldCardsEnumValidator.isPostcardTypeCorrect(currentStringTagType)) {
-                    OldCardsType oldCardsType = OldCardsType.valueOf(currentUppedStringTagType.replaceAll("-","_"));
+                    OldCardsType oldCardsType = OldCardsType.valueOf(currentUppedStringTagType.replaceAll("-", "_"));
 
                     isPostcard = true;
 
