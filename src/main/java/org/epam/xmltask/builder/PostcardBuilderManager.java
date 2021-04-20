@@ -1,15 +1,19 @@
 package org.epam.xmltask.builder;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.epam.xmltask.entity.OldCardsType;
 import org.epam.xmltask.exception.CustomXmlParserException;
 
 public class PostcardBuilderManager {
+    private final static Logger LOGGER = LogManager.getLogger();
+
 
     public PostcardBuilder createPostcard(OldCardsType type) throws CustomXmlParserException {
 
         PostcardBuilder postcardBuilder;
 
-        switch (type){
+        switch (type) {
             case POSTCARD:
                 postcardBuilder = new PostcardBuilder();
                 break;
@@ -20,6 +24,7 @@ public class PostcardBuilderManager {
                 postcardBuilder = new CongratulatoryPostcardBuilder();
                 break;
             default:
+                LOGGER.warn("Couldn't create postcard: incorrect type");
                 throw new CustomXmlParserException("Unexpected value: " + type);
         }
         return postcardBuilder;
@@ -30,7 +35,7 @@ public class PostcardBuilderManager {
 
         PostcardBuilder postcardBuilder;
 
-        switch (uppedType){
+        switch (uppedType) {
             case "POSTCARD":
                 postcardBuilder = new PostcardBuilder();
                 break;
@@ -41,6 +46,7 @@ public class PostcardBuilderManager {
                 postcardBuilder = new CongratulatoryPostcardBuilder();
                 break;
             default:
+                LOGGER.warn("Couldn't create postcard: incorrect type");
                 throw new CustomXmlParserException("Unexpected value: " + type);
         }
         return postcardBuilder;

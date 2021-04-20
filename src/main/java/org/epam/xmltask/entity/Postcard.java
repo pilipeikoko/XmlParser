@@ -2,10 +2,6 @@ package org.epam.xmltask.entity;
 
 import java.time.LocalDate;
 
-//todo add more xml elements
-//todo loggers
-//todo main
-
 public class Postcard {
     private static final String DEFAULT_WEBSITE = "defaultwebsite.com";
 
