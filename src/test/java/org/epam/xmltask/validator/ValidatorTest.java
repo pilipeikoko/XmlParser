@@ -4,7 +4,7 @@ import org.junit.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class XmlValidatorTest {
+public class ValidatorTest {
 
     @DataProvider(name = "idTestData")
     public Object[][] idTestData() {
@@ -43,5 +43,4 @@ public class XmlValidatorTest {
 
         Assert.assertEquals(expectedResult,actualResult);
     }
-    //todo xml validator?
 }
