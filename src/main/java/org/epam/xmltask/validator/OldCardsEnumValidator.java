@@ -10,7 +10,7 @@ public class OldCardsEnumValidator {
         boolean flag = false;
 
         for (OldCardsType type : OldCardsType.values()) {
-            String tempValue = type.name().toLowerCase().replaceAll("_","-");
+            String tempValue = type.name().toLowerCase().replaceAll("_", "-");
             if (tempValue.equals(value)) {
                 flag = true;
                 break;
@@ -19,11 +19,11 @@ public class OldCardsEnumValidator {
         return flag;
     }
 
-    public static boolean isPostcardElementCorrect(String value){
+    public static boolean isPostcardElementCorrect(String value) {
         boolean flag = false;
 
-        for(OldCardsElement elements: OldCardsElement.values()){
-            String tempValue = elements.name().toLowerCase().replaceAll("_","-");
+        for (OldCardsElement elements : OldCardsElement.values()) {
+            String tempValue = elements.name().toLowerCase().replaceAll("_", "-");
 
             if (tempValue.equals(value)) {
                 flag = true;
@@ -34,11 +34,11 @@ public class OldCardsEnumValidator {
         return flag;
     }
 
-    public static boolean isPostcardAttributeCorrect(String value){
+    public static boolean isPostcardAttributeCorrect(String value) {
         boolean flag = false;
 
-        for(OldCardsAttribute attributes: OldCardsAttribute.values()){
-            String tempValue = attributes.name().toLowerCase().replaceAll("_","-");
+        for (OldCardsAttribute attributes : OldCardsAttribute.values()) {
+            String tempValue = attributes.name().toLowerCase().replaceAll("_", "-");
 
             if (tempValue.equals(value)) {
                 flag = true;

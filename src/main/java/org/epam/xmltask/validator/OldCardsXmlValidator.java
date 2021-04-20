@@ -18,15 +18,17 @@ import java.io.IOException;
 public class OldCardsXmlValidator {
     private static final Logger LOGGER = LogManager.getLogger();
 
-    private static final String SCHEMA_FILE_NAME = "oldCards.xsd";
+    private static final String SCHEMA_FILE_NAME = "data/oldCards.xsd";
 
     public static void validateXml(String path) throws CustomXmlParserException {
 
         SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
 
         try {
-            Source schemaSource = new StreamSource(SCHEMA_FILE_NAME);
-            File schemaFile = new File(path);
+            File schemaSourceFile = new File(ClassLoader.getSystemResource(path).getPath());
+            Source schemaSource = new StreamSource(schemaSourceFile);
+
+            File schemaFile = new File(ClassLoader.getSystemResource(SCHEMA_FILE_NAME).getPath());
             Schema schema = schemaFactory.newSchema(schemaFile);
 
             Validator validator = schema.newValidator();
@@ -35,7 +37,8 @@ public class OldCardsXmlValidator {
             validator.validate(schemaSource);
 
         } catch (SAXException | IOException e) {
-            throw new CustomXmlParserException("Wrong XML file: " + e.getMessage(),e.getCause());
+            LOGGER.error("Wrong XML file: " + e.getMessage());
+            throw new CustomXmlParserException("Wrong XML file: " + e.getMessage(), e.getCause());
         }
 
     }
