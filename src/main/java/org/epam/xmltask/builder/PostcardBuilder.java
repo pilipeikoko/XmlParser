@@ -1,5 +1,7 @@
 package org.epam.xmltask.builder;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.epam.xmltask.entity.Postcard;
 
 import java.time.LocalDate;
@@ -7,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PostcardBuilder {
+    protected final static Logger LOGGER = LogManager.getLogger();
+
     protected List<String> elements;
     protected List<String> attributes;
 
@@ -15,11 +19,11 @@ public class PostcardBuilder {
         this.elements = new ArrayList<>();
     }
 
-    public void addAttribute(String attribute){
+    public void addAttribute(String attribute) {
         attributes.add(attribute);
     }
 
-    public void addElement(String element){
+    public void addElement(String element) {
         elements.add(element);
     }
 
@@ -34,9 +38,9 @@ public class PostcardBuilder {
         } else {
             postcard = new Postcard(elements.get(0), Boolean.parseBoolean(elements.get(1)), elements.get(2),
                     LocalDate.parse(elements.get(3)), elements.get(4), elements.get(5),
-                    attributes.get(0),attributes.get(1));
+                    attributes.get(0), attributes.get(1));
         }
-
+        LOGGER.info("Postcard created: " + postcard.toString());
         return postcard;
     }
 }

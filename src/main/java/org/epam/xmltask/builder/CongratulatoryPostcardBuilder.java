@@ -25,7 +25,7 @@ public class CongratulatoryPostcardBuilder extends PostcardBuilder {
                     elements.get(2), LocalDate.parse(elements.get(3)), elements.get(4), elements.get(5),
                     attributes.get(0), attributes.get(1), elements.get(6));
         }
-
+        LOGGER.info("Congratulatory postcard created: " + congratulatoryPostcard.toString());
         return congratulatoryPostcard;
     }
 
